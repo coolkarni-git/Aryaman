@@ -23,7 +23,19 @@ fun AppNavHost(
     ) {
 
         composable(AppDestination.Splash.route) {
-            SplashScreen()
+
+            SplashScreen(
+                onNavigateToLogin = {
+
+                    navController.navigate(AppDestination.Login.route) {
+
+                        popUpTo(AppDestination.Splash.route) {
+                            inclusive = true
+                        }
+
+                    }
+                }
+            )
         }
 
         composable(AppDestination.Login.route) {
